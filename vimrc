@@ -161,7 +161,7 @@ autocmd FileType javascript noremap <C-L> :!/usr/local/bin/jsl %<CR>
 nnoremap <Leader>1 yypVr=
 nnoremap <Leader>2 yypVr-
 
-nnoremap <Leader>w <C-w>v<C-w>l
+nnoremap <Leader>r <C-w>v<C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -196,3 +196,4 @@ let NERDTreeIgnore = ['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index
 " Quick Edit
 " ----------------------------------------------------------
 nnoremap <F3> :vsplit $MYVIMRC<cr>
+:command! Cwd :lcd %:p:h
