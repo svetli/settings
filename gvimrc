@@ -26,3 +26,4 @@
 :set go-=L
 :set go-=r
 :set go-=R
+:set go-=m

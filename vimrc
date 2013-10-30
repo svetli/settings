@@ -136,7 +136,6 @@ let g:gundo_preview_statusline = "Gundo Preview"
 " Plugin: vim-powerline
 " ----------------------------------------------------------
 let g:Powerline_symbols="unicode"
-let g:Powerline_cache_file=~/.vim/Powerline-vim.cache
 " ----------------------------------------------------------
 
 " ----------------------------------------------------------
