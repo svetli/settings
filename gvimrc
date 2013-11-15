@@ -1,23 +1,13 @@
 " ----------------------------------------------------------
 " Set Font
 " ----------------------------------------------------------
-":set guifont=ProggyClean
-":set guifont=ProggyCleanTTSZBP\ 12
-":set giufont=Anonymous\ Pro\ for\ Powerline\ 12
-:set guifont=Menlo\ for\ Powerline\ 10
-
-" ----------------------------------------------------------
-" Set Colorscheme
-" ----------------------------------------------------------
-:colorscheme badwolf
-:set background=dark
-
+:set guifont=xos4\ Terminus
+:set background=light
 " ----------------------------------------------------------
 " Set lines and colums
 " ----------------------------------------------------------
 :set lines=30
 :set columns=100
-
 " ----------------------------------------------------------
 " Remove all the UI cruft
 " ----------------------------------------------------------

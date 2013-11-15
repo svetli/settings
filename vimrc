@@ -18,42 +18,63 @@ let mapleader = ","
 " ----------------------------------------------------------
 " Basic options
 " ----------------------------------------------------------
-:set nocompatible		" use vim settings instead vi
-:set modelines=0		" turn off modelines
-:set encoding=utf-8 	" set encoding
-:set tabstop=4			" set tab width
-:set shiftwidth=4		""
-:set softtabstop=4 		""
-:set expandtab			""
-:set scrolljump=5		" set scrolling
-:set scrolloff=3		""
-:set smarttab			" code indent
-:set shiftround			""
-:set autoindent			""
-:set smartindent		""
-:set showmode			""
-:set showcmd			""
-:set hidden				""
-:set wildmenu			""
-:set cursorline			""
-:set ttyfast			""
-:set ruler				""
-:set laststatus=2		" show info in ruler
-:set relativenumber		" display line number column
-:set undofile			" create *.un~ files
-:set number				" show line numbers
-:set ignorecase			" make case insensitive search
-:set smartcase			" make case insensitive search
-:set gdefault			" make searches globaly /g
-:set incsearch			" highlight searches
-:set showmatch			" show search matches
-:set hlsearch			" highlight searches
-:set clipboard=unnamed	" work with system clipboard
-:set wrap				" handle long lines correctly
-:set textwidth=80		""
-:set colorcolumn=+1		""
-:set formatoptions=qrn1 ""
-:set backspace=start,eol,indent
+:set autoindent					" turn on auto-indenting
+:set backspace=indent,eol,start " allows backspacing beyond starting point of insert mode, indents and line breaks
+:set clipboard=unnamed			" work with system clipboard
+:set cursorline					"
+:set colorcolumn=+1				"
+:set encoding=utf-8 			" set encoding
+:set expandtab					"
+:set formatoptions=qrn1 		"
+:set gdefault					" make searches globaly /g
+:set hlsearch					" highlight searches
+:set hidden						"
+:set ignorecase					" ignores case in search patterns
+:set incsearch					" highlight searches
+:set laststatus=2				" show info in ruler
+:set listchars+=tab:▸\			"
+:set listchars+=eol:¬			"
+:set listchars+=extends:❯		"
+:set listchars+=precedes:❮		"
+:set linebreak                  " wrap long lines at a space instead of in the middle of a word
+:set modelines=0				" turn off modelines
+:set nocompatible				" use vim settings instead vi
+:set noswapfile                 "
+:set number						" show line numbers
+:set ruler						"
+:set relativenumber				" display line number column
+:set regexpengine=1             " slow scrolling with new regexpengine
+:set showbreak=↪				"
+:set showmatch					" show search matches
+:set showmode					"
+:set showcmd					" display an incomplete command in the lower right
+:set shiftround					"
+:set shiftwidth=4				" width (in spaces) used in each step of autoindent (aswell as << and >>)
+:set scrolljump=5				" set scrolling
+:set scrolloff=3				"
+:set softtabstop=4 				"
+:set smarttab					" code indent
+:set smartcase					" don't ignore case when the search pattern has uppercase
+:set smartindent				" 
+:set synmaxcol=500              " dont try highlight lines longer than 500 chars
+:set tabstop=4					" width (in spaces) that a <tab> is displayed as
+:set textwidth=80				" number of columns before an automatic line break is inserted (see formatoptions)
+:set ttyfast					"
+:set wildmenu					"
+:set wrap						" handle long lines correctly
+:set undofile					" create *.un~ files
+
+" ----------------------------------------------------------
+"  Resize splits when the window is resized
+" ----------------------------------------------------------
+:autocmd VimResized * :wincmd =
+
+" ----------------------------------------------------------
+"  Template Files
+" ----------------------------------------------------------
+:autocmd BufNewFile *.html 0r $HOME/.vim/templates/template.html
+:autocmd BufNewFile *.php 0r $HOME/.vim/templates/template.php
+:autocmd BufNewFile *.xml 0r $HOME/.vim/templates/template.xml
 
 " ----------------------------------------------------------
 " Disable arrow keys
@@ -73,7 +94,7 @@ inoremap <right> <nop>
 :syntax enable
 :let g:solarized_termtrans=1
 :let g:solarized_termcolors=16
-:set background=light
+:set background=dark
 :colorscheme solarized
 
 " ----------------------------------------------------------
@@ -103,6 +124,12 @@ vnoremap <F1> <ESC>
 " Remap ESC key
 " ----------------------------------------------------------
 :map! kj <esc>
+noremap j gj
+noremap gj j
+noremap k gk
+noremap gk k
+noremap H ^
+noremap L $
 
 " ----------------------------------------------------------
 " Plugin: syntastic
