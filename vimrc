@@ -70,6 +70,11 @@ let mapleader = ","
 :autocmd VimResized * :wincmd =
 
 " ----------------------------------------------------------
+"  Auto reload vimrc when it's saved
+" ----------------------------------------------------------
+:autocmd BufWritePost .vimrc so ~/.vimrc
+
+" ----------------------------------------------------------
 "  Template Files
 " ----------------------------------------------------------
 :autocmd BufNewFile *.html 0r $HOME/.vim/templates/template.html
@@ -124,21 +129,53 @@ vnoremap <F1> <ESC>
 " Remap ESC key
 " ----------------------------------------------------------
 :map! kj <esc>
+
+" ----------------------------------------------------------
+" Moving without skip wrapped lines
+" ----------------------------------------------------------
 noremap j gj
 noremap gj j
 noremap k gk
 noremap gk k
+
+" ----------------------------------------------------------
+" Jump to start and end of line using the home row keys 
+" remapping common-keys
+" ----------------------------------------------------------
 noremap H ^
 noremap L $
+
+" ----------------------------------------------------------
+"  Reselect visual block after indent/outdent
+" ----------------------------------------------------------
+vnoremap < <gv
+vnoremap > >gv
+
+" ----------------------------------------------------------
+" Select all in current buffer
+" ----------------------------------------------------------
+map <Leader>a ggVG
+
+" ----------------------------------------------------------
+" Buffer management
+" ----------------------------------------------------------
+nmap <Leader>b :ls<CR>:buffer<Space>
 
 " ----------------------------------------------------------
 " Plugin: syntastic
 " ----------------------------------------------------------
 let g:syntastic_check_on_open=0
-let g:syntastic_auto_jump=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_auto_jump=0
 let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['php', 'javascript', 'json', 'html', 'sh', 'docbk', 'css', 'xml', 'xhtml'] }
+let g:syntastic_enable_signs=1
+let g:syntastic_stl_format='[%E{%e Errors}%B{, }%W{%w Warnings}]'
+let g:syntastic_mode_map={
+    \ "mode":"active",
+    \ "active_filetypes":['php', 'javascript'],
+    \ "passive_filetypes":['java', 'html']
+    \ }
+nnoremap <Leader>C :SyntasticCheck<CR>
 
 " ----------------------------------------------------------
 " Plugin: tabularize
@@ -177,17 +214,13 @@ autocmd FileType php noremap <C-M> :w!<CR>:/usr/bin/php %<CR>
 autocmd FileType xml noremap <C-L> :w!<CR>:/usr/bin/xmllint %<CR>
 
 " ----------------------------------------------------------
-" JSLint
-" ----------------------------------------------------------
-autocmd FileType javascript noremap <C-L> :!/usr/local/bin/jsl %<CR>
-
-" ----------------------------------------------------------
 " Helpers
 " ----------------------------------------------------------
 nnoremap <Leader>1 yypVr=
 nnoremap <Leader>2 yypVr-
 
 nnoremap <Leader>r <C-w>v<C-w>l
+nnoremap <Leader>s <C-w>s<C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
