@@ -197,9 +197,9 @@ let g:gundo_tree_statusline = "Gundo"
 let g:gundo_preview_statusline = "Gundo Preview"
 
 " ----------------------------------------------------------
-" Plugin: vim-powerline
+" Plugin: powerline
 " ----------------------------------------------------------
-let g:Powerline_symbols="unicode"
+let g:Powerline_symbols="fancy"
 " ----------------------------------------------------------
 
 " ----------------------------------------------------------
