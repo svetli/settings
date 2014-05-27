@@ -39,7 +39,8 @@ let mapleader = ","
 :set linebreak                  " wrap long lines at a space instead of in the middle of a word
 :set modelines=0				" turn off modelines
 :set nocompatible				" use vim settings instead vi
-:set noswapfile                 "
+:set noswapfile                 " no swap files
+:set nobackup                   " no backup files
 :set number						" show line numbers
 :set ruler						"
 :set relativenumber				" display line number column
@@ -62,7 +63,6 @@ let mapleader = ","
 :set ttyfast					"
 :set wildmenu					"
 :set wrap						" handle long lines correctly
-:set undofile					" create *.un~ files
 
 " ----------------------------------------------------------
 "  Resize splits when the window is resized
