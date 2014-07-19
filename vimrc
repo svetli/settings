@@ -162,6 +162,11 @@ map <Leader>a ggVG
 nmap <Leader>b :ls<CR>:buffer<Space>
 
 " ----------------------------------------------------------
+"  Move yankring history file outside home dir
+" ----------------------------------------------------------
+let g:yankring_history_dir = '/tmp' 
+
+" ----------------------------------------------------------
 " Plugin: syntastic
 " ----------------------------------------------------------
 let g:syntastic_check_on_open=0
