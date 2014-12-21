@@ -59,7 +59,7 @@ let mapleader = ","
 :set smartindent				" 
 :set synmaxcol=500              " dont try highlight lines longer than 500 chars
 :set tabstop=4					" width (in spaces) that a <tab> is displayed as
-:set textwidth=80				" number of columns before an automatic line break is inserted (see formatoptions)
+:set textwidth=120				" number of columns before an automatic line break is inserted (see formatoptions)
 :set ttyfast					"
 :set wildmenu					"
 :set wrap						" handle long lines correctly
