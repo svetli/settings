@@ -56,7 +56,7 @@ let mapleader = ","
 :set softtabstop=4 				"
 :set smarttab					" code indent
 :set smartcase					" don't ignore case when the search pattern has uppercase
-:set smartindent				" 
+:set smartindent				"
 :set synmaxcol=500              " dont try highlight lines longer than 500 chars
 :set tabstop=4					" width (in spaces) that a <tab> is displayed as
 :set textwidth=120				" number of columns before an automatic line break is inserted (see formatoptions)
@@ -139,7 +139,7 @@ noremap k gk
 noremap gk k
 
 " ----------------------------------------------------------
-" Jump to start and end of line using the home row keys 
+" Jump to start and end of line using the home row keys
 " remapping common-keys
 " ----------------------------------------------------------
 noremap H ^
@@ -164,7 +164,7 @@ nmap <Leader>b :ls<CR>:buffer<Space>
 " ----------------------------------------------------------
 "  Move yankring history file outside home dir
 " ----------------------------------------------------------
-let g:yankring_history_dir = '/tmp' 
+let g:yankring_history_dir = '/tmp'
 
 " ----------------------------------------------------------
 " Plugin: syntastic
@@ -217,6 +217,11 @@ autocmd FileType php noremap <C-M> :w!<CR>:/usr/bin/php %<CR>
 " XMLLint
 " ----------------------------------------------------------
 autocmd FileType xml noremap <C-L> :w!<CR>:/usr/bin/xmllint %<CR>
+
+" ----------------------------------------------------------
+" JSLint
+" ----------------------------------------------------------
+autocmd FileType js noremap <C-L> :w!<CR>:/usr/bin/jslint %<CR>
 
 " ----------------------------------------------------------
 " Helpers
