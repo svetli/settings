@@ -1,7 +1,7 @@
 " ----------------------------------------------------------
 " Set Font
 " ----------------------------------------------------------
-:set guifont=xos4\ Terminess\ Powerline\ 12
+:set guifont=Terminess\ Powerline\ 12
 :set background=light
 " ----------------------------------------------------------
 " Set lines and colums
