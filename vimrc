@@ -80,6 +80,7 @@ let mapleader = ","
 :autocmd BufNewFile *.html 0r $HOME/.vim/templates/template.html
 :autocmd BufNewFile *.php 0r $HOME/.vim/templates/template.php
 :autocmd BufNewFile *.xml 0r $HOME/.vim/templates/template.xml
+:autocmd BufRead,BufNewFile *.less setfiletype css
 
 " ----------------------------------------------------------
 " Disable arrow keys
