@@ -21,10 +21,13 @@ let mapleader = ","
 :set autoindent					" turn on auto-indenting
 :set backspace=indent,eol,start " allows backspacing beyond starting point of insert mode, indents and line breaks
 :set clipboard=unnamed			" work with system clipboard
-:set cursorline					"
+:set cursorline					" highlight cursor line
 :set colorcolumn=+1				"
 :set encoding=utf-8 			" set encoding
 :set expandtab					"
+:set foldenable                 " enable code folding
+:set foldmethod=indent          "
+:set foldlevelstart=5           "
 :set formatoptions=qrn1 		"
 :set gdefault					" make searches globaly /g
 :set hlsearch					" highlight searches
@@ -42,6 +45,7 @@ let mapleader = ","
 :set noswapfile                 " no swap files
 :set nobackup                   " no backup files
 :set number						" show line numbers
+:set pastetoggle=<ins>          " toggle paste with <ins>
 :set ruler						"
 :set relativenumber				" display line number column
 :set regexpengine=1             " slow scrolling with new regexpengine
@@ -53,7 +57,7 @@ let mapleader = ","
 :set shiftwidth=4				" width (in spaces) used in each step of autoindent (aswell as << and >>)
 :set scrolljump=5				" set scrolling
 :set scrolloff=3				"
-:set softtabstop=4 				"
+:set softtabstop=4 				" let backspace delete indent
 :set smarttab					" code indent
 :set smartcase					" don't ignore case when the search pattern has uppercase
 :set smartindent				"
@@ -61,8 +65,27 @@ let mapleader = ","
 :set tabstop=4					" width (in spaces) that a <tab> is displayed as
 :set textwidth=120				" number of columns before an automatic line break is inserted (see formatoptions)
 :set ttyfast					"
-:set wildmenu					"
+:set wildmenu					" show list instead of just completing
 :set wrap						" handle long lines correctly
+:set wrapscan                   " wrap the scan around the document
+
+" ----------------------------------------------------------
+" Clean up GUI
+" ----------------------------------------------------------
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=m
+    set guioptions-=b
+    set guifont=Terminess\ Powerline\ 13
+    set background=dark
+    set lines=30
+    set columns=100
+endif
+
 
 " ----------------------------------------------------------
 "  Resize splits when the window is resized
@@ -98,8 +121,9 @@ inoremap <right> <nop>
 " Set color scheme
 " ----------------------------------------------------------
 :syntax enable
-:let g:solarized_termtrans=1
-:let g:solarized_termcolors=16
+:set t_Co=256
+":let g:solarized_termtrans=1   " show terminal transparent background    
+:let g:solarized_termcolors=256 "
 :set background=dark
 :colorscheme solarized
 
@@ -206,23 +230,30 @@ let g:gundo_preview_statusline = "Gundo Preview"
 " Plugin: powerline
 " ----------------------------------------------------------
 let g:Powerline_symbols="fancy"
+
+" ----------------------------------------------------------
+"  Plugin: snipmate
+" ----------------------------------------------------------
+let g:snippets_dir = "~/.vim/snippets"
+
 " ----------------------------------------------------------
 
 " ----------------------------------------------------------
 " PHP Parser Check
 " ----------------------------------------------------------
-autocmd FileType php noremap <C-L> :w!<CR>:/usr/bin/php -l %<CR>
-autocmd FileType php noremap <C-M> :w!<CR>:/usr/bin/php %<CR>
+"autocmd FileType php noremap <C-L> :w!<CR>:/usr/bin/php -l %<CR>
+"autocmd FileType php noremap <C-M> :w!<CR>:/usr/bin/php %<CR>
+autocmd FileType php nnoremap <buffer> <F8> :exe ':!~/.Settings/bin/ctagsgen.sh "tags"'<CR>
 
 " ----------------------------------------------------------
 " XMLLint
 " ----------------------------------------------------------
-autocmd FileType xml noremap <C-L> :w!<CR>:/usr/bin/xmllint %<CR>
+"autocmd FileType xml noremap <C-L> :w!<CR>:/usr/bin/xmllint %<CR>
 
 " ----------------------------------------------------------
 " JSLint
 " ----------------------------------------------------------
-autocmd FileType js noremap <C-L> :w!<CR>:/usr/bin/jslint %<CR>
+"autocmd FileType js noremap <C-L> :w!<CR>:/usr/bin/jslint %<CR>
 
 " ----------------------------------------------------------
 " Helpers
@@ -248,19 +279,24 @@ let g:atia_attributes_complete = 0
 " ----------------------------------------------------------
 " NERD Tree
 " ----------------------------------------------------------
-noremap  <F2> :NERDTreeToggle<cr>
-inoremap <F2> <esc>:NERDTreeToggle<cr>
-
-let NERDTreeHighlightCursorline = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDChristmasTree = 1
-let NERDTreeChDirMode = 2
-
+map <C-e> :NERDTreeToggle<CR>
+let NERDTreeShowBookmarks=1
+let NERDTreeHighlightCursorline=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+let NERDTreeChDirMode=0
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let NERDTreeQuitOnOpen=1
 let NERDTreeIgnore = ['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index',
                     \ 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json',
                     \ '.*\.o$', 'db.db', 'tags.bak', '.*\.pdf$', '.*\.mid$',
                     \ '.*\.midi$']
+
+" ----------------------------------------------------------
+"  AG
+" ----------------------------------------------------------
+let g:agprg="ag --ignore tags --column"
 
 " ----------------------------------------------------------
 " Quick Edit

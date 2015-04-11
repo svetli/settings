@@ -5,7 +5,7 @@
 PROJECT=`basename $0`
 PROJECT=${PROJECT##*-}
 
-CONFFILE="$HOME/public_html/$PROJECT.conf"
+CONFFILE="$HOME/Public/$PROJECT.conf"
 
 if [ ! -e $CONFFILE ];then
     echo "Tmux project by name '$PROJECT' not found"
