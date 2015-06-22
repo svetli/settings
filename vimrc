@@ -124,8 +124,18 @@ inoremap <right> <nop>
 :set t_Co=256
 ":let g:solarized_termtrans=1   " show terminal transparent background    
 :let g:solarized_termcolors=256 "
-:set background=dark
+":set background=dark
 :colorscheme solarized
+
+function! ToggleBackground()
+    if &background == 'dark'
+        :set background=light
+    else
+        :set background=dark
+    endif
+endfunction
+
+nmap <silent> <F6> :call ToggleBackground()<CR>
 
 " ----------------------------------------------------------
 " Tune up regex search
@@ -277,21 +287,11 @@ let g:microdata_attributes_complete = 0
 let g:atia_attributes_complete = 0
 
 " ----------------------------------------------------------
-" NERD Tree
+" VimFiler
 " ----------------------------------------------------------
-map <C-e> :NERDTreeToggle<CR>
-let NERDTreeShowBookmarks=1
-let NERDTreeHighlightCursorline=1
-let NERDTreeMinimalUI=1
-let NERDTreeDirArrows=1
-let NERDTreeChDirMode=0
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-let NERDTreeQuitOnOpen=1
-let NERDTreeIgnore = ['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index',
-                    \ 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json',
-                    \ '.*\.o$', 'db.db', 'tags.bak', '.*\.pdf$', '.*\.mid$',
-                    \ '.*\.midi$']
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_as_default_explorer = 1
+nnoremap <silent> <C-e> :<C-U>VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
 
 " ----------------------------------------------------------
 "  AG
