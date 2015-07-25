@@ -122,20 +122,19 @@ inoremap <right> <nop>
 " ----------------------------------------------------------
 :syntax enable
 :set t_Co=256
-":let g:solarized_termtrans=1   " show terminal transparent background    
-:let g:solarized_termcolors=256 "
-":set background=dark
+":let g:solarized_termcolors=256 "
+:set background=dark
 :colorscheme solarized
 
-function! ToggleBackground()
-    if &background == 'dark'
-        :set background=light
-    else
-        :set background=dark
-    endif
-endfunction
+"function! ToggleBackground()
+"    if &background == 'dark'
+"        :set background=light
+"    else
+"        :set background=dark
+"    endif
+"endfunction
 
-nmap <silent> <F6> :call ToggleBackground()<CR>
+"nmap <silent> <F6> :call ToggleBackground()<CR>
 
 " ----------------------------------------------------------
 " Tune up regex search
@@ -164,6 +163,7 @@ vnoremap <F1> <ESC>
 " Remap ESC key
 " ----------------------------------------------------------
 :map! kj <esc>
+:map! jj <esc>
 
 " ----------------------------------------------------------
 " Moving without skip wrapped lines
