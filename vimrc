@@ -48,7 +48,7 @@ let mapleader = ","
 :set pastetoggle=<ins>          " toggle paste with <ins>
 :set ruler						"
 :set relativenumber				" display line number column
-:set regexpengine=1             " slow scrolling with new regexpengine
+":set regexpengine=1             " slow scrolling with new regexpengine
 :set showbreak=↪				"
 :set showmatch					" show search matches
 :set showmode					"

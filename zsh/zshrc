@@ -60,7 +60,7 @@ path=(~/bin $path)
 export LANG=en_US.UTF-8
 
 if [[ -f ~/.dir_colors ]] ; then
-    eval $(dircolors -b ~/.dir_colors)
+    eval $(gdircolors -b ~/.dir_colors)
 fi
 
 if [[ $TERM == 'xterm' ]] ; then

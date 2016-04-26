@@ -3,3 +3,4 @@ NERDTreeBookmarks
 .*.un~
 *~
 .netrwhist
+.DS_Store
