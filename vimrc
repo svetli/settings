@@ -34,6 +34,7 @@ let mapleader = ","
 :set hidden						"
 :set ignorecase					" ignores case in search patterns
 :set incsearch					" highlight searches
+:set lazyredraw                 " 
 :set laststatus=2				" show info in ruler
 :set listchars+=tab:▸\			"
 :set listchars+=eol:¬			"
@@ -47,7 +48,7 @@ let mapleader = ","
 :set number						" show line numbers
 :set pastetoggle=<ins>          " toggle paste with <ins>
 :set ruler						"
-:set relativenumber				" display line number column
+":set relativenumber				" display line number column
 ":set regexpengine=1             " slow scrolling with new regexpengine
 :set showbreak=↪				"
 :set showmatch					" show search matches
@@ -65,6 +66,7 @@ let mapleader = ","
 :set tabstop=4					" width (in spaces) that a <tab> is displayed as
 :set textwidth=120				" number of columns before an automatic line break is inserted (see formatoptions)
 :set ttyfast					"
+:set ttyscroll=3                "
 :set wildmenu					" show list instead of just completing
 :set wrap						" handle long lines correctly
 :set wrapscan                   " wrap the scan around the document
@@ -126,15 +128,11 @@ inoremap <right> <nop>
 :set background=dark
 :colorscheme solarized
 
-"function! ToggleBackground()
-"    if &background == 'dark'
-"        :set background=light
-"    else
-"        :set background=dark
-"    endif
-"endfunction
+command! Light :set background=light
+command! Dark :set :background=dark
 
-"nmap <silent> <F6> :call ToggleBackground()<CR>
+nmap <silent> <F5> :set background=dark<CR><BAR>:let g:airline_solarized_bg='dark'<CR><BAR>:AirlineTheme solarized<CR>
+nmap <silent> <F6> :set background=light<CR><BAR>:let g:airline_solarized_bg='light'<CR><BAR>:AirlineTheme solarized<CR>
 
 " ----------------------------------------------------------
 " Tune up regex search
@@ -195,6 +193,9 @@ map <Leader>a ggVG
 " Buffer management
 " ----------------------------------------------------------
 nmap <Leader>b :ls<CR>:buffer<Space>
+nmap <Leader>l :bnext<CR>
+nmap <Leader>h :bprev<CR>
+nmap <Leader>bq :bprev <BAR> bd #<CR>
 
 " ----------------------------------------------------------
 "  Move yankring history file outside home dir
@@ -218,28 +219,45 @@ let g:syntastic_mode_map={
 nnoremap <Leader>C :SyntasticCheck<CR>
 
 " ----------------------------------------------------------
-" Plugin: tabularize
-" ----------------------------------------------------------
-if exists(":Tabularize")
-	nmap <Leader>a= :Tabularize /=<CR>
-	vmap <Leader>a= :Tabularize /=<CR>
-	nmap <Leader>a: :Tabularize /:\zs<CR>
-	vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
-
-" ----------------------------------------------------------
 " Plugin: GUndo
 " ----------------------------------------------------------
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F7> :GundoToggle<CR>
 let g:gundo_debug = 1
 let g:gundo_preview_bottom = 1
 let g:gundo_tree_statusline = "Gundo"
 let g:gundo_preview_statusline = "Gundo Preview"
 
 " ----------------------------------------------------------
-" Plugin: powerline
+" Plugin: airline
 " ----------------------------------------------------------
-let g:Powerline_symbols="fancy"
+let g:airline_theme='solarized'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tagbar#flags = 'f'
+
+" ----------------------------------------------------------
+" Plugin: ctrlp
+" ----------------------------------------------------------
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+nnoremap <Leader>o :CtrlP<CR>
+
+" ----------------------------------------------------------
+" Plugin: tagbar
+" ----------------------------------------------------------
+let g:tagbar_phpctags_bin='~/bin/phpctags'
+let g:tagbar_phpctags_memory_limit='512M'
+
+" ----------------------------------------------------------
+" Plugin: gutentags
+" ----------------------------------------------------------
+let g:gutentags_exclude = ['*.css', '*.html', '*.js']
+let g:gutentags_cache_dir = '~/.vim.gutentags'
+map <silent> <leader>jd :CtrlPTag<cr><c-\>w
 
 " ----------------------------------------------------------
 "  Plugin: snipmate
@@ -303,3 +321,8 @@ let g:agprg="ag --ignore tags --column"
 " ----------------------------------------------------------
 nnoremap <F3> :vsplit $MYVIMRC<cr>
 :command! Cwd :lcd %:p:h
+
+" ----------------------------------------------------------
+" Preserve indent while paste from OSX clipboard
+" ----------------------------------------------------------
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>

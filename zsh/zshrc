@@ -54,10 +54,12 @@ export EDITOR='vim'
 bindkey -v
 setopt AUTO_CD
 
-path=(~/bin $path)
+path=(~/bin $path ~/Library/Python/2.7/bin)
+export GOPATH=~/bin/go
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
+#export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 
 if [[ -f ~/.dir_colors ]] ; then
     eval $(gdircolors -b ~/.dir_colors)
@@ -74,3 +76,4 @@ alias tmux-kill='tmux kill-session -t'
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 
+export PATH="/usr/local/sbin:$PATH"
