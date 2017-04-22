@@ -54,8 +54,11 @@ export EDITOR='vim'
 bindkey -v
 setopt AUTO_CD
 
-path=(~/bin $path ~/Library/Python/2.7/bin)
+path=(~/bin $path ~/Library/Python/2.7/bin ~/Library/Android/sdk/platform-tools)
 export GOPATH=~/bin/go
+
+# Additional completion definitions for Zsh.
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # You may need to manually set your language environment
 #export LANG=en_US.UTF-8
@@ -75,5 +78,6 @@ alias grep='grep --color'
 alias tmux-kill='tmux kill-session -t'
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
+alias mongod='mongod -f /usr/local/etc/mongod.conf &'
 
 export PATH="/usr/local/sbin:$PATH"

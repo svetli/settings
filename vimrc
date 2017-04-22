@@ -255,7 +255,7 @@ let g:tagbar_phpctags_memory_limit='512M'
 " ----------------------------------------------------------
 " Plugin: gutentags
 " ----------------------------------------------------------
-let g:gutentags_exclude = ['*.css', '*.html', '*.js']
+let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js']
 let g:gutentags_cache_dir = '~/.vim.gutentags'
 map <silent> <leader>jd :CtrlPTag<cr><c-\>w
 
@@ -291,6 +291,10 @@ nnoremap <Leader>2 yypVr-
 
 nnoremap <Leader>r <C-w>v<C-w>l
 nnoremap <Leader>s <C-w>s<C-w>l
+
+" ----------------------------------------------------------
+" Use <ctrl> + direction key to move around within windows
+" ----------------------------------------------------------
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -321,6 +325,16 @@ let g:agprg="ag --ignore tags --column"
 " ----------------------------------------------------------
 nnoremap <F3> :vsplit $MYVIMRC<cr>
 :command! Cwd :lcd %:p:h
+
+" ----------------------------------------------------------
+" ViMux: Quickly run shell commands without leaving Vim
+" ----------------------------------------------------------
+let g:VimuxHeight = "25"
+let g:VimuxOrientation = "v"
+let g:VimuxUseNearest = 0
+
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
 
 " ----------------------------------------------------------
 " Preserve indent while paste from OSX clipboard
