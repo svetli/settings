@@ -57,6 +57,9 @@ setopt AUTO_CD
 path=(~/bin $path ~/Library/Python/2.7/bin ~/Library/Android/sdk/platform-tools)
 export GOPATH=~/bin/go
 
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
 # Additional completion definitions for Zsh.
 fpath=(/usr/local/share/zsh-completions $fpath)
 
