@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -54,11 +57,14 @@ export EDITOR='vim'
 bindkey -v
 setopt AUTO_CD
 
-path=(~/bin $path ~/Library/Python/2.7/bin ~/Library/Android/sdk/platform-tools)
-export GOPATH=~/bin/go
-
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+path=(
+    ~/bin
+    ~/Library/Python/2.7/bin
+    /usr/local/bin
+    /usr/local/opt/python/libexec/bin
+    /Volumes/MacData/Qt/5.9.1/5.9.1/clang_64/bin
+    $path
+)
 
 # Additional completion definitions for Zsh.
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -76,6 +82,7 @@ if [[ $TERM == 'xterm' ]] ; then
 fi
 
 # Aliases
+alias ls='gls --color=auto'
 alias zshrc='$EDITOR ~/.zshrc'
 alias grep='grep --color'
 alias tmux-kill='tmux kill-session -t'
