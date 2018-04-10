@@ -61,8 +61,6 @@ path=(
     ~/bin
     ~/Library/Python/2.7/bin
     /usr/local/bin
-    /usr/local/opt/python/libexec/bin
-    /Volumes/MacData/Qt/5.9.1/5.9.1/clang_64/bin
     $path
 )
 
