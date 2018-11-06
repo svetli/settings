@@ -76,3 +76,6 @@
 [submodule "vim/bundle/typescript-vim"]
 	path = vim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim
+[submodule "vim/bundle/alchemist.vim"]
+	path = vim/bundle/alchemist.vim
+	url = https://github.com/slashmili/alchemist.vim
